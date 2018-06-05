@@ -138,6 +138,7 @@ class TodoListViewController: UITableViewController {
     
     func loadItems() {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        tableView.reloadData()
     }
     
     
@@ -173,7 +174,6 @@ extension TodoListViewController: UISearchBarDelegate {
 //        loadItems(with: request, predicate: request.predicate)
         
         todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
-        tableView.reloadData()
         
     }
     //No difference between Realm and CoreData
